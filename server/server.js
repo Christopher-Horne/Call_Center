@@ -13,7 +13,7 @@ dbConnect();
 const app = express();
 
 // Use CORS middleware to enable cross-origin requests
-app.use(cors());
+//app.use(cors());
 
 // Parse JSON requests
 app.use(express.json(), cors({origin:'http://localhost:5173', credentials:true}))  // Middleware to use json in the request body and cors

@@ -1,7 +1,6 @@
 import { Schema, model } from 'mongoose'
 import mongooseUniqueValidator from 'mongoose-unique-validator'
 import validator from 'validator'
-const { isEmail } = validator
 import bcrypt from 'bcrypt'
 
 const UserSchema = new Schema({
@@ -12,21 +11,17 @@ const UserSchema = new Schema({
         maxLength:[50, "Username must be less than 50 characters"],
         unique: [true, 'Username already exists']
     },
-
-    // email:{
-    //     type: String,
-    //     required:[true, "Email is required"],
-    //     minLength:[8, "Email must be 8 or more characters"],
-    //     maxLength:[100, "Email must be less than 100 characters"],
-    //     validate: [isEmail, 'Not an email'],
-    //     unique: [true, 'Email already exists']
-    // },
     
     password:{
         type: String,
         required:[true, "Password is required"],
         minLength:[8, "Password must be 8 or more characters"],
         maxLength:[50, "Password must be less than 50 characters"]
+    },
+
+    role:{
+        type: String,
+        required:[true, "Role is required"]
     }
 }, { timestamps: true })
 
@@ -52,7 +47,7 @@ UserSchema.pre('validate', function (next) {
 UserSchema.pre('save', function (next){
     bcrypt.hash(this.password, 10)
         .then(hash => {
-            console.log('HASH: ', hash);
+            //console.log('HASH: ', hash);
             this.password = hash
             next()
         })
