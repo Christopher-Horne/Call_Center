@@ -60,5 +60,30 @@ export const UserController = {
         catch(err){
             res.status(500).json(err)
         }
+    },
+
+    // Update User
+    updateUser: async (req, res) =>{
+        const id = req.params.id
+        const options = { new:true, runValidators:true}
+        try {
+            const updateUser = await User.findByIdAndUpdate(id, req.body, options)
+            res.status(201).json(updateUser)
+        } 
+        catch(err) {
+            return res.status(500).json(err)
+        }
+    },
+
+    // Delete User
+    deleteUser: async (req, res) =>{
+        const id = req.params.id
+        try {
+            await User.findByIdAndDelete(id)
+            return res.status(204).send()
+        } 
+        catch(err){
+            return res.status(500).json(err)
+        }
     }
 }
