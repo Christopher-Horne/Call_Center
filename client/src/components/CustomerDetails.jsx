@@ -31,8 +31,8 @@ const CustomerDetails = (props) =>{
             <p>City: {customer.city}</p>
             <p>State: {customer.state}</p>
             <p>Zip/Country Code: {customer.zipCode}</p>
-            <p>City: {customer.country}</p>
-            <p>City: {customer.email}</p>
+            <p>Country: {customer.country}</p>
+            <p>Email: {customer.email}</p>
             <button onClick={() => deleteCustomer(customer._id)} className="btn btn-sm btn-danger">Delete Customer</button>
         </div>
     )

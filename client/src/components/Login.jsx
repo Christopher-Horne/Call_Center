@@ -21,18 +21,23 @@ const Login = (props) =>{
 
 
     return (
-        <form onSubmit={submitHandler}>
-            <h1>Login</h1>
-            <div>
-                <label>User Name: </label>
-                <input type="text" onChange={(e) => setUserName(e.target.value)} />
+        <div className="container d-flex justify-content-center align-items-center">
+            <div className="card">
+                <form onSubmit={submitHandler}>
+                    <h5 className="card-title text-center">Login</h5>
+                    <div className="mb-3">
+                        <label className="form-label">User Name: </label>
+                        <input type="text" className="form-control" onChange={(e) => setUserName(e.target.value)} />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Password: </label>
+                        <input type="password" className="form-control" onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                    <button className="btn btn-warning w-100">Login</button>
+                </form>
             </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <button>Login</button>
-        </form>
+        </div>
+        
 )}
 
 export default Login;

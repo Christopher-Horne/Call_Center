@@ -14,8 +14,13 @@ const CustomerSchema = new Schema({
         type: String,
         required:[false],
         maxLength:[100, "Email must be less than 100 characters"],
-        validate: [isEmail, 'Not an email'],
-        unique: [true, 'Email already exists']
+        validate: {
+            validator: function (value) {
+                // If the email is empty, don't validate
+                return value === '' || isEmail(value);
+            },
+            message: 'Not a valid email'
+        }
     },
     
     streetAddress:{
