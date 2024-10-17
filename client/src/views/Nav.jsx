@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Nav = (props) =>{
+const Nav = ({ darkMode, toggleDarkMode, user, setUser }) =>{
 
     const navigate = useNavigate()
     const location = useLocation()
     console.log(location)
 
-    const {id} = useParams()
-
-    const [user, setNewUser] = useState({})
-    const [customer, setNewCustomer] = useState({})
+    // const [user, setNewUser] = useState({})
+    // const [customer, setNewCustomer] = useState({})
 
     // useEffect(() => {
     //     axios.get(`http://localhost:8000/api/customers/customer/${id}`)
@@ -50,6 +47,7 @@ const Nav = (props) =>{
     const Logout = () =>{
         axios.post('http://localhost:8000/api/logout', {}, {withCredentials:true})
         .then(() =>{
+            setUser(null)
             navigate('/')
         })
         .catch((err =>{
@@ -59,13 +57,19 @@ const Nav = (props) =>{
 
     return (
         <header>
-            <nav className="navbar fixed-top">
+            <nav className={`navbar fixed-top ${darkMode ? 'bg-dark text-white' : 'bg-light'}`}>
                 <div>
-                    <Link to={"/home"}><button className="btn btn-m btn-warning">Home</button></Link>
-                    <Link to={"/newCustomer"}><button className="btn btn-m btn-warning" >Create Customer</button></Link>
-                    <Link to={"/registerUser"}><button className="btn btn-m btn-warning" >New User</button></Link>
+                    <Link to={"/home"}><button className="btn btn-m btn-warning me-2">Home</button></Link>
+                    <Link to={"/newCustomer"}><button className="btn btn-m btn-warning me-2" >Create Customer</button></Link>
+                    {user && user.role === 'admin' && ( // Is the user is logged in and the role is admin then show the button
+                        <Link to={"/registerUser"}><button className="btn btn-m btn-warning">New User</button></Link>
+                    )}
                 </div>
                 <h1>{getHeader()}</h1>
+                <div className="d-flex align-items-center">
+                    <button onClick={toggleDarkMode} className="btn btn-secondary me-2">
+                        Toggle Dark Mode
+                    </button>
                     <Link to={"/"}><button className="btn btn-m btn-warning" onClick={Logout}>Logout</button></Link>
                 {/* <div className="form-inline">
                 {
@@ -78,6 +82,7 @@ const Nav = (props) =>{
                     location.pathname === `/customer/${customer._id}/details/${customer.customerName}` && (<Link to={`/customer/${customer._id}/edit/${customer.name}`}><button type="button" className="btn btn-sm btn-warning">Update</button></Link>)
                 }
                 </div> */}
+                </div>
             </nav>
         </header>
     )

@@ -6,12 +6,14 @@ const Login = (props) =>{
     const navigate = useNavigate()
     const [password, setPassword] = useState('');
     const [userName, setUserName] = useState('');
+    const { setUser } = props;
 
     const submitHandler = (e) =>{
         e.preventDefault();
         axios.post('http://localhost:8000/api/login', {userName, password}, {withCredentials:true})
             .then((res) =>{
                 console.log(res);
+                setUser(res.data)
                 navigate('/home')
             })
             .catch((err =>{

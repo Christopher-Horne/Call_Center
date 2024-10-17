@@ -40,3 +40,21 @@
 .read-the-docs {
   color: #888;
 }
+
+body.bg-dark {
+  background-color: #343a40; /* Dark background */
+  color: white; /* Text color in dark mode */
+}
+
+body.bg-light {
+  background-color: white; /* Light background */
+  color: black; /* Text color in light mode */
+}
+
+.navbar.bg-dark {
+  background-color: #212529; /* Dark navbar */
+}
+
+.navbar.bg-light {
+  background-color: #f8f9fa; /* Light navbar */
+}

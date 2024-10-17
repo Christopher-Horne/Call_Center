@@ -13,6 +13,8 @@ import Nav from './views/Nav.jsx'
 
 function App() {
 
+  const [user, setUser] = useState(null);
+
   // Toggle Dark Mode
   const [darkMode, setDarkMode] = useState(false);
 
@@ -32,19 +34,22 @@ function App() {
 
   return (
 
-    <div className={darkMode ? 'bg-dark text-white' : ''}>
+    <div className={darkMode ? 'bg-dark text-white' : 'bg-light'}>
       <BrowserRouter>
         {/* <Nav />     // This makes sure the Nav component renders on all routes. */}
-        <button onClick={toggleDarkMode} className="btn btn-secondary m-3">
+        {user && (
+        <Nav darkMode={darkMode} toggleDarkMode={toggleDarkMode} user={user} setUser={setUser} />
+        )}
+        {/* <button onClick={toggleDarkMode} className="btn btn-secondary m-3">
           Toggle Dark Mode
-        </button>
+        </button> */}
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<><Nav /><Home /></>} />
-          <Route path="/customer/:id/details/:name" element={<><Nav /><CustomerDetails /></>} />
-          <Route path="/customer/:id/edit/:name" element={<><Nav /><CustomerEdit/></>} />
-          <Route path="/newCustomer" element={<><Nav /><NewCustomer/></>} />
-          <Route path="/registerUser" element={<><Nav /><RegisterUser/></>} />
+          <Route path="/" element={<Login setUser={setUser} />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/customer/:id/details/:name" element={<CustomerDetails />} />
+          <Route path="/customer/:id/edit/:name" element={<CustomerEdit/>} />
+          <Route path="/newCustomer" element={<NewCustomer/>} />
+          <Route path="/registerUser" element={<RegisterUser/>} />
         </Routes>
       </BrowserRouter>
     </div>

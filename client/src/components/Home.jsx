@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
-import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 const Home = () =>{
@@ -18,11 +17,9 @@ const Home = () =>{
     }, [])
 
     return (
-        <div>
-            {/* <h1>Patients</h1> */}
-
-            <table className ="border border-2 table table-striped p-2">
-                <thead>
+        <div className="container mt-4">
+            <table className="table table-striped table-bordered">
+                <thead className="table-dark">
                     <tr>
                         <th>Customer Name</th>
                         <th>Street Address</th>

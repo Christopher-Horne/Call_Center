@@ -31,45 +31,51 @@ const Register = (props) =>{
     }
 
     return (
-        <form onSubmit={submitHandler}>
-            <h1>Register User</h1>
-            <div>
-                <label>Username</label>
-                <input type="text" onChange={(e) => setUserName(e.target.value)} />
-                {
-                        errors.userName?
-                        <p className="text-danger">{errors.userName.message}</p> : null
-                }
+        <div className="container mt-5">
+            <h1 className="text-center">Register User</h1>
+            <div className="card p-4">
+                <form onSubmit={submitHandler}>
+                    <div className="mb-3">
+                        <label className="form-label">Username</label>
+                        <input className="form-control" type="text" onChange={(e) => setUserName(e.target.value)} />
+                        {
+                                errors.userName?
+                                <p className="text-danger">{errors.userName.message}</p> : null
+                        }
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input className="form-control" type="password" onChange={(e) => setPassword(e.target.value)} />
+                        {
+                                errors.password?
+                                <p className="text-danger">{errors.password.message}</p> : null
+                        }
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Confirm Password</label>
+                        <input className="form-control" type="password" onChange={(e) => setConfirmPassword(e.target.value)} />
+                        {
+                                errors.password?
+                                <p className="text-danger">{errors.password.message}</p> : null
+                        }
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label" htmlFor="role">Role: </label>
+                        <select className="form-control" name="role" id="role" onChange={(e) => setRole(e.target.value)}>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                        {
+                                errors.role?
+                                <p className="text-danger">{errors.role.message}</p> : null
+                        }
+                    </div>
+                    <button className="btn btn-sm btn-warning">Register User</button>
+                    <button onClick={() => navigate("/home")} className="btn btn-secondary ms-2">Go Back</button>
+            </form>
             </div>
-            <div>
-                <label>Password</label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} />
-                {
-                        errors.password?
-                        <p className="text-danger">{errors.password.message}</p> : null
-                }
-            </div>
-            <div>
-                <label>Confirm Password</label>
-                <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} />
-                {
-                        errors.password?
-                        <p className="text-danger">{errors.password.message}</p> : null
-                }
-            </div>
-            <div>
-                <label htmlFor="role">Role: </label>
-                <select name="role" id="role" onChange={(e) => setRole(e.target.value)}>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
-                </select>
-                {
-                        errors.role?
-                        <p className="text-danger">{errors.role.message}</p> : null
-                }
-            </div>
-            <button>Register User</button>
-        </form>
+        </div>
+        
     )
 }
 
