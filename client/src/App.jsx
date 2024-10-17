@@ -46,7 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login setUser={setUser} />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/customer/:id/details/:name" element={<CustomerDetails />} />
+          <Route path="/customer/:id/details/:name" element={<CustomerDetails user={user} />} />
           <Route path="/customer/:id/edit/:name" element={<CustomerEdit/>} />
           <Route path="/newCustomer" element={<NewCustomer/>} />
           <Route path="/registerUser" element={<RegisterUser/>} />
