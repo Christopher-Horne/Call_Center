@@ -42,8 +42,8 @@ const Home = () =>{
                                 <td>{customer.state}</td>
                                 <td>{customer.zipCode}</td>
                                 <td>{customer.country}</td>
-                                <td>{customer.phoneNumber}</td>
-                                <td>{customer.email}</td>
+                                <td><a href={`tel:${customer.phoneNumber}`}>{customer.phoneNumber}</a></td>
+                                <td><a href={`mailto:${customer.email}`}>{customer.email}</a></td>
                                 <td><Link to={`/customer/${customer._id}/edit/${customer.customerName}`} state={'edit'}><button type="button" className="btn btn-sm btn-warning" >Edit</button></Link></td>
                             </tr>
                         ))

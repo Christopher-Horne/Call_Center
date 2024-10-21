@@ -38,8 +38,8 @@ const CustomerDetails = ({user}) =>{
                         <li className="list-group-item">State: {customer.state}</li>
                         <li className="list-group-item">Zip/Country Code: {customer.zipCode}</li>
                         <li className="list-group-item">Country: {customer.country}</li>
-                        <li className="list-group-item">Phone: {customer.phoneNumber}</li>
-                        <li className="list-group-item">Email: {customer.email}</li>
+                        <li className="list-group-item">Phone: <a href={`tel:${customer.phoneNumber}`}>{customer.phoneNumber}</a></li>
+                        <li className="list-group-item">Email: <a href={`mailto:${customer.email}`}>{customer.email}</a></li>
                     </ul>
                     <div className="card-footer text-end">
                         {user && user.role === 'admin' && ( // Is the user is logged in and the role is admin then show the button
