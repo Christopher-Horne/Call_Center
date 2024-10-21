@@ -56,6 +56,11 @@ const CustomerSchema = new Schema({
         required:[true, "Country is required"],
         minLength:[4, "Country must be 4 or more characters"],
         maxLength:[100, "Country must be less than 100 characters"]
+    },
+    phoneNumber:{
+        type: String,
+        required:[true, "Phone Number is required"],
+        minLength:[10, "Phone number must be 10 or more characters"]
     }
 }, { timestamps: true })
 
