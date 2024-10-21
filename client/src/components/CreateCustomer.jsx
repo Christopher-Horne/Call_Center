@@ -13,6 +13,7 @@ const CreateCustomer = (props) =>{
     const [zipCode, setZipCode] = useState("")
     const [country, setCountry] = useState("")
     const [email, setEmail] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
     const [errors, setErrors] = useState({})
 
     const submitHandler = (e) =>{
@@ -25,7 +26,8 @@ const CreateCustomer = (props) =>{
             state,
             zipCode,
             country,
-            email
+            email,
+            phoneNumber
         }
         axios.post("http://localhost:8000/api/customers/newCustomer", newCustomer)
             .then((res) =>{
@@ -88,6 +90,14 @@ const CreateCustomer = (props) =>{
                         {
                             errors.country?
                             <p className="text-danger">{errors.country.message}</p> : null
+                        }
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-control">Phone: </label>
+                        <input className="form-control" type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                        {
+                            errors.phoneNumber?
+                            <p className="text-danger">{errors.phoneNumber.message}</p> : null
                         }
                     </div>
                     <div className="mb-3">

@@ -38,6 +38,7 @@ const CustomerDetails = ({user}) =>{
                         <li className="list-group-item">State: {customer.state}</li>
                         <li className="list-group-item">Zip/Country Code: {customer.zipCode}</li>
                         <li className="list-group-item">Country: {customer.country}</li>
+                        <li className="list-group-item">Phone: {customer.phoneNumber}</li>
                         <li className="list-group-item">Email: {customer.email}</li>
                     </ul>
                     <div className="card-footer text-end">

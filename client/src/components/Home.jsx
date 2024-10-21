@@ -27,6 +27,7 @@ const Home = () =>{
                         <th>State</th>
                         <th>Zip/Country Code</th>
                         <th>Country</th> 
+                        <th>Phone</th>
                         <th>Email</th>
                         <th>Edit</th>
                     </tr>
@@ -41,6 +42,7 @@ const Home = () =>{
                                 <td>{customer.state}</td>
                                 <td>{customer.zipCode}</td>
                                 <td>{customer.country}</td>
+                                <td>{customer.phoneNumber}</td>
                                 <td>{customer.email}</td>
                                 <td><Link to={`/customer/${customer._id}/edit/${customer.customerName}`} state={'edit'}><button type="button" className="btn btn-sm btn-warning" >Edit</button></Link></td>
                             </tr>

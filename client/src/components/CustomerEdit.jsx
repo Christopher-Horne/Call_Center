@@ -12,6 +12,7 @@ const CustomerEdit = (props) =>{
     const [zipCode, setZipCode] = useState("")
     const [country, setCountry] = useState("")
     const [email, setEmail] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
     const [errors, setErrors] = useState({})
 
 
@@ -25,6 +26,7 @@ const CustomerEdit = (props) =>{
             setZipCode(response.data.zipCode);
             setCountry(response.data.country);
             setEmail(response.data.email);
+            setPhoneNumber(response.data.phoneNumber);
         })
         .catch((error) => {
             console.log(error)
@@ -46,7 +48,8 @@ const CustomerEdit = (props) =>{
             state,
             zipCode,
             country,
-            email
+            email,
+            phoneNumber
         }
 
         axios.put(`http://localhost:8000/api/customers/updateCustomer/${id}`, updatedCustomer)
@@ -108,6 +111,14 @@ const CustomerEdit = (props) =>{
                         {
                             errors.country?
                             <p className="text-danger">{errors.country.message}</p> : null
+                        }
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Phone: </label>
+                        <input className="form-control" type="text" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
+                        {
+                            errors.phoneNumber?
+                            <p className="text-danger">{errors.phoneNumber.message}</p> : null
                         }
                     </div>
                     <div className="mb-3">
