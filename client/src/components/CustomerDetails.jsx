@@ -44,7 +44,7 @@ const CustomerDetails = ({user}) =>{
                         {user && user.role === 'admin' && ( // Is the user is logged in and the role is admin then show the button
                             <button onClick={() => deleteCustomer(customer._id)} className="btn btn-sm btn-danger">Delete Customer</button>
                         )}
-                        <button onClick={() => navigate(-1)} className="btn btn-secondary ms-2">
+                        <button onClick={() => navigate("/home")} className="btn btn-secondary ms-2">
                         Go Back
                         </button>
                     </div>
